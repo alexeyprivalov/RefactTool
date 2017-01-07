@@ -23,6 +23,7 @@ $regex =~ s/\)/\\\)/g;
 
 $filename = basename $filename;
 
+my %funchash;
 my $body = "";
 while( <src> )
 {
@@ -44,14 +45,17 @@ while( <src> )
             if( $open_bracket_count == $close_bracket_count
                 && $open_bracket_count > 0)
             {
-                open (int_point, ">out/$filename.$func_name.cpp");
-                print int_point $body;
-                close (int_point );
+            	$funchash{$func_name} = $body; 
+                #open (int_point, ">../refact_out/$filename.$func_name.cpp");
+                #print int_point $body;
+                #close (int_point );
                 $body = "";
             }
         }
     }
 }
+
+return %funchash;
 
 }
 
