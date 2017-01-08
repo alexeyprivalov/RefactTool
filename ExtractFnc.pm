@@ -59,6 +59,22 @@ return %funchash;
 
 }
 
-# module initalization
+sub extract_declaration
+{
+	my ($regex) = @_;
+	
+	
+	#fetch function func_name
+	$regex =~ /\s+([A-Za-z0-9_]+)\s*\(/g;
+	$func_name = $1;
+
+	# cleanup ctag regex:
+	$regex =~ s/[\^\$\"\/]//g;
+
+	return ( "$func_name" => "$regex" );
+}
+
+
+# Module initalization
 1;
 
