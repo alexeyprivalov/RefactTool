@@ -18,6 +18,7 @@ $func_name = $1;
 $regex =~ s/[\^\$\"\;]//g;
 $regex =~ s/\(/\\\(/g;
 $regex =~ s/\)/\\\)/g; 
+$regex =~ s/\*/\\\*/g; 
 
 #print "// Filename: $filename regex: $regex function: $func_name\n";
 
